@@ -81,8 +81,8 @@ module Google
       options[:order_by] ||= 'lastmodified' # other option is 'starttime'
       formatted_start_min = Addressable::URI.encode_component(start_min.strftime("%FT%T%:z"), Addressable::URI::CharacterClasses::UNRESERVED)
       formatted_start_max = Addressable::URI.encode_component(start_max.strftime("%FT%T%:z"), Addressable::URI::CharacterClasses::UNRESERVED)
-      query = "?start-min=#{formatted_start_min}&start-max=#{formatted_start_max}&recurrence-expansion-start=#{formatted_start_min}&recurrence-expansion-end=#{formatted_start_max}"
-      query = "#{query}&orderby=#{options[:order_by]}&max-results=#{options[:max_results]}"
+      query = "?start-min=#{formatted_start_min}&start-max=#{formatted_start_max}"
+      query = "#{query}&orderby=#{options[:order_by]}&max-results=#{options[:max_results]}&showdeleted=true&singleevents=true&sortorder=ascending"
       event_lookup(query)
     end
 
